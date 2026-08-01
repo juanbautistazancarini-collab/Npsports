@@ -1,65 +1,188 @@
-@media (max-width: 768px) {
-    /* 1. Ajustar el header y el logo flotante para que no choquen */
-    header {
-        padding-left: 60px !important; /* Deja espacio para que el logo no tape el texto */
-        font-size: 18px !important;
-    }
 
-    img[src="logo.png"] {
-        width: 50px !important;
-        top: 10px !important;
-        left: 10px !important;
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    /* 2. Acomodar la barra de navegación en columna */
-    nav {
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 12px !important;
-        padding: 12px !important;
-    }
+body {
+  margin: 0;
+}
 
-    .nav-links {
-        display: flex;
-        justify-content: space-around !important;
-        width: 100% !important;
-        margin: 0 !important;
-    }
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e6f4ea, #cfe9d8);
+}
 
-    .nav-links a {
-        margin-right: 0 !important;
-        font-size: 15px !important;
-    }
+body {
+    display: flex;
+    flex-direction: column;
+}
 
-    .nav-right {
-        width: 100% !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-    }
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #2f5d3a, #3e7c50);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
 
-    .search-box {
-        flex: 1 !important;
-        margin-right: 15px;
-    }
+/* NAV */
+nav {
+    background: rgba(46, 94, 58, 0.95);
+    padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    .search-box input {
-        width: 100% !important;
-    }
+.nav-links a {
+    color: #e8f5e9;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 14px;
+}
 
-    /* 3. Forzar a que las tarjetas del catálogo se vean de a una por renglón */
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding: 6px 30px 6px 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+
+.search-box i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #2f5d3a;
+}
+
+.cart {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: #4f9d65;
+    font-size: 11px;
+    padding: 3px 6px;
+    border-radius: 50%;
+}
+
+/* MAIN */
+main {
+    flex: 1;
+}
+
+.section-title {
+    text-align: center;
+    margin-top: 40px;
+    color: #2f5d3a;
+    font-size: 50px;
+}
+
+.section-title2 {
+    text-align: center;
+    margin-top: 40px;
+    color: #2f5d3a;
+    font-size: 25px;
+}
+
+.container {
+    padding: 30px 40px 50px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: linear-gradient(145deg, #ffffff, #e3f1e8);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(46, 94, 58, 0.15);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin: 10px 0 5px;
+    color: #2f5d3a;
+    font-size: 16px;
+}
+
+.price {
+    font-weight: bold;
+    margin: 8px 0;
+    color: #3e7c50;
+}
+
+button {
+    background: linear-gradient(90deg, #3e7c50, #4f9d65);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+#contacto {
+    padding: 60px 20px;
+    text-align: center;
+    background: #f4faf6;
+}
+
+#contacto h2 {
+    color: #2f5d3a;
+}
+
+footer {
+    background: linear-gradient(90deg, #2f5d3a, #3e7c50);
+    color: #e8f5e9;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+@media (max-width: 900px) {
     .container {
-        grid-template-columns: 1fr !important;
-        padding: 15px !important;
-        gap: 20px !important;
+        grid-template-columns: repeat(2, 1fr);
     }
+}
 
-    .card {
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    .section-title {
-        font-size: 32px !important;
-        margin-top: 25px !important;
+@media (max-width: 500px) {
+    .container {
+        grid-template-columns: 1fr;
     }
 }
