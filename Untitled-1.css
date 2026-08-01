@@ -1,49 +1,65 @@
-/* ========================================= */
-/* ADAPTACIÓN PARA CELULARES Y MÓVILES */
-/* ========================================= */
-
 @media (max-width: 768px) {
-    /* La barra de navegación se apila verticalmente */
-    nav {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px;
-        text-align: center;
+    /* 1. Ajustar el header y el logo flotante para que no choquen */
+    header {
+        padding-left: 60px !important; /* Deja espacio para que el logo no tape el texto */
+        font-size: 18px !important;
     }
 
-    /* Los enlaces del menú se acomodan en fila centrada */
+    img[src="logo.png"] {
+        width: 50px !important;
+        top: 10px !important;
+        left: 10px !important;
+    }
+
+    /* 2. Acomodar la barra de navegación en columna */
+    nav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        padding: 12px !important;
+    }
+
     .nav-links {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        justify-content: space-around !important;
+        width: 100% !important;
+        margin: 0 !important;
     }
 
     .nav-links a {
-        margin-right: 0;
+        margin-right: 0 !important;
+        font-size: 15px !important;
     }
 
-    /* La barra de búsqueda se adapta al ancho de la pantalla */
     .nav-right {
-        width: 100%;
-        justify-content: center;
-        flex-direction: column;
-        gap: 10px;
+        width: 100% !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
     }
 
     .search-box {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        flex: 1 !important;
+        margin-right: 15px;
     }
 
     .search-box input {
-        width: 80%;
+        width: 100% !important;
     }
 
-    /* Reducir un poco el título grande en celulares */
+    /* 3. Forzar a que las tarjetas del catálogo se vean de a una por renglón */
+    .container {
+        grid-template-columns: 1fr !important;
+        padding: 15px !important;
+        gap: 20px !important;
+    }
+
+    .card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
     .section-title {
-        font-size: 32px;
-        margin-top: 20px;
+        font-size: 32px !important;
+        margin-top: 25px !important;
     }
 }
