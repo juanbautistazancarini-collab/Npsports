@@ -15,10 +15,23 @@ body {
 header {
     background: linear-gradient(90deg, #2f5d3a, #3e7c50);
     color: white;
-    padding: 20px;
+    padding: 25px 20px;
     text-align: center;
     font-size: 24px;
     letter-spacing: 2px;
+    position: relative;
+}
+
+/* LOGO */
+.logo-tienda {
+    position: absolute; 
+    top: 12px; 
+    left: 15px; 
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
 }
 
 /* NAV */
@@ -95,7 +108,7 @@ main {
     font-size: 45px;
 }
 
-/* CONTENEDOR EN PC: 3 columnas para que no se vean tan chiquitos */
+/* CONTENEDOR EN PC: 3 columnas */
 .container {
     padding: 30px 40px 50px 40px;
     display: grid;
@@ -176,9 +189,22 @@ footer {
 }
 
 /* ========================================= */
-/* ADAPTACIÓN MÓVIL (2 COLUMNAS EN TELÉFONO) */
+/* ADAPTACIÓN MÓVIL                          */
 /* ========================================= */
 @media (max-width: 768px) {
+    header {
+        font-size: 18px;
+        padding: 20px 10px 20px 75px; /* Deja espacio a la izquierda para el logo */
+        text-align: left;
+    }
+
+    .logo-tienda {
+        width: 48px;
+        height: 48px;
+        top: 15px;
+        left: 12px;
+    }
+
     nav {
         flex-direction: column;
         gap: 15px;
@@ -211,7 +237,7 @@ footer {
         width: 85%;
     }
 
-    /* AQUÍ SE CONFIGURA PARA QUE SE VEAN 2 PRODUCTOS POR FILA EN CELULAR */
+    /* 2 PRODUCTOS POR FILA EN CELULAR */
     .container {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
