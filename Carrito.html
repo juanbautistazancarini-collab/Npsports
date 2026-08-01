@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carrito</title>
+<title>Carrito - NP SPORTS SHOP</title>
+
+<!-- LOGO EN LA PESTAÑA DEL NAVEGADOR -->
+<link rel="icon" type="image/png" href="logo.png">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -219,7 +222,6 @@ function irAPagar() {
         return;
     }
 
-    // Tu número de WhatsApp con código de país y área (ejemplo: Argentina +54 9 2227...)
     let numeroWhatsApp = "5492227561449"; 
 
     let mensaje = "Hola! Quiero realizar el siguiente pedido:\n\n";
@@ -232,10 +234,8 @@ function irAPagar() {
 
     mensaje += `\n*Total a pagar: $${total.toLocaleString()}*`;
 
-    // Codificar el mensaje para que funcione correctamente en la URL de WhatsApp
     let mensajeCodificado = encodeURIComponent(mensaje);
 
-    // Abrir WhatsApp con el mensaje prellenado
     window.open(`https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`, '_blank');
 }
 
