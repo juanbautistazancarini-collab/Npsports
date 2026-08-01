@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrito</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e6f4ea, #cfe9d8);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(90deg, #2f5d3a, #3e7c50);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.container {
+    max-width: 900px;
+    width: 90%;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+h2 {
+    margin-top: 0;
+    color: #2f5d3a;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+/* Estilos para alinear la imagen, el nombre y el precio */
+.item-details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.item-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.item-price {
+    color: #3e7c50;
+    font-weight: bold;
+}
+
+.total {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2f5d3a;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.acciones-carrito {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    background: linear-gradient(90deg, #3e7c50, #4f9d65);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.btn-vaciar {
+    background: linear-gradient(90deg, #c0392b, #e74c3c);
+}
+
+.btn-eliminar {
+    background: #e74c3c;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    margin-top: 20px;
+    padding: 20px 0;
+}
+
+footer {
+    background: linear-gradient(90deg, #2f5d3a, #3e7c50);
+    color: #e8f5e9;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<i class="fas fa-shopping-cart"></i> Tu Carrito
+</header>
+
+<div class="container">
+    <h2>Productos seleccionados</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="total" id="totalPrice"></div>
+
+    <div class="acciones-carrito">
+        <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
+        <button onclick="irAPagar()">Ir a pagar</button>
+    </div>
+</div>
+
+<footer>
+© 2026 Np Sports Shop - Todos los derechos reservados
+</footer>
+
+<script>
+const cartContainer = document.getElementById("cartItems");
+const totalContainer = document.getElementById("totalPrice");
+
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+function renderCarrito() {
+    cartContainer.innerHTML = "";
+    let total = 0;
+
+    if (carrito.length === 0) {
+        cartContainer.innerHTML = "<div class='empty'>El carrito está vacío.</div>";
+        totalContainer.innerHTML = "Total: $0";
+        return;
+    }
+
+    carrito.forEach((item, index) => {
+        total += item.price;
+
+        cartContainer.innerHTML += `
+            <div class="cart-item">
+                <div class="item-details">
+                    <img src="${item.img}" alt="${item.name}" class="cart-img">
+                    <div class="item-info">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-price">$${item.price.toLocaleString()}</div>
+                    </div>
+                </div>
+                <button class="btn-eliminar" onclick="eliminarItem(${index})">Eliminar</button>
+            </div>
+        `;
+    });
+
+    totalContainer.innerHTML = `Total: $${total.toLocaleString()}`;
+}
+
+function eliminarItem(index) {
+    carrito.splice(index, 1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    renderCarrito();
+}
+
+function vaciarCarrito() {
+    localStorage.removeItem("carrito");
+    carrito = [];
+    renderCarrito();
+}
+
+function irAPagar() {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    if (carrito.length === 0) {
+        alert("El carrito está vacío.");
+        return;
+    }
+
+    // Tu número de WhatsApp con código de país y área (ejemplo: Argentina +54 9 2227...)
+    let numeroWhatsApp = "5492227561449"; 
+
+    let mensaje = "Hola! Quiero realizar el siguiente pedido:\n\n";
+    let total = 0;
+
+    carrito.forEach((item, index) => {
+        mensaje += `${index + 1}. ${item.name} - $${item.price.toLocaleString()}\n`;
+        total += item.price;
+    });
+
+    mensaje += `\n*Total a pagar: $${total.toLocaleString()}*`;
+
+    // Codificar el mensaje para que funcione correctamente en la URL de WhatsApp
+    let mensajeCodificado = encodeURIComponent(mensaje);
+
+    // Abrir WhatsApp con el mensaje prellenado
+    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`, '_blank');
+}
+
+renderCarrito();
+</script>
+
+</body>
+</html>
