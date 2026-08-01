@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Detalle del Producto</title>
+
+<link rel="stylesheet" href="Untitled-2.css">
+<style>
+    /* Estilos rápidos por si necesitas alinear el botón de compra */
+    button {
+        background: linear-gradient(90deg, #3e7c50, #4f9d65);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 20px;
+        width: 100%;
+    }
+    button:hover {
+        opacity: 0.9;
+    }
+</style>
+</head>
+<body>
+
+<header>
+NP SPORTS SHOP
+</header>
+
+<div class="container">
+
+<div class="gallery">
+    <div class="main-image">
+        <img id="mainImg" src="" alt="Producto">
+    </div>
+
+    <div class="thumbnails">
+        <img src="Imaginen1.jpeg" onclick="cambiarImagen(this.src)">
+        <img src="Imaginen3.jpeg" onclick="cambiarImagen(this.src)">
+        <img src="Imaginen4.jpeg" onclick="cambiarImagen(this.src)">
+    </div>
+</div>
+
+<div class="details">
+    <h1 id="productName">Cargando producto...</h1>
+    <div class="price" id="productPrice">$0</div>
+
+    <div class="description">
+        Remera oficial de excelente calidad, cómoda y versátil para uso deportivo o urbano.
+    </div>
+
+    <div class="select-group">
+        <label>Talle:</label><br>
+        <select id="productSize">
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+        </select>
+    </div>
+
+    <button onclick="comprar()">Agregar al carrito</button>
+</div>
+
+</div>
+
+<footer>
+© 2026 Np sports shop - Todos los derechos reservados
+</footer>
+
+<script>
+// Capturar los datos enviados por la URL
+const urlParams = new URLSearchParams(window.location.search);
+const nombre = urlParams.get('nombre') || 'Remera deportiva';
+const precio = Number(urlParams.get('precio')) || 35000;
+const imagen = urlParams.get('imagen') || 'Imaginen2.jpeg';
+
+// Asignar los valores a los elementos HTML
+document.getElementById("pageTitle").innerText = nombre;
+document.getElementById("productName").innerText = nombre;
+document.getElementById("productPrice").innerText = `$${precio.toLocaleString()}`;
+document.getElementById("mainImg").src = imagen;
+
+function cambiarImagen(src) {
+    document.getElementById("mainImg").src = src;
+}
+
+function comprar() {
+    const talleSeleccionado = document.getElementById("productSize").value;
+    const nombreConTalle = `${nombre} (Talle: ${talleSeleccionado})`;
+
+    const producto = {
+        name: nombreConTalle,
+        price: precio,
+        img: imagen
+    };
+
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.push(producto);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    alert("¡Producto agregado al carrito!");
+    window.location.href = "Carrito.html"; // Opcional: te redirige al carrito al comprar
+}
+</script>
+
+</body>
+</html>
