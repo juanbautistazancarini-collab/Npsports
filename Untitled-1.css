@@ -28,7 +28,7 @@ header {
 }
 
 /* LOGO EN PC (Flotando a la izquierda) */
-.logo.png {
+.logo-tienda {
     position: absolute; 
     top: 50%;
     transform: translateY(-50%);
