@@ -84,12 +84,12 @@ NP SPORTS SHOP
 
 <!-- Tarjeta 3 -->
 <div class="card">
-    <a href="paginaproducto.html?nombre=Remera selección suplente 3&precio=35000&imagen=Imaginen1.jpeg" style="text-decoration: none; color: inherit;">
+    <a href="paginaproducto.html?nombre=Remera Camiseta river&precio=35000&imagen=Imaginen1.jpeg" style="text-decoration: none; color: inherit;">
         <img src="Imaginen1.jpeg" class="producto-img">
         <h3>Remera Camiseta river</h3>
         <p class="price">$35.000</p>
     </a>
-    <button class="btn-comprar" onclick="agregarAlCarrito('Remera selección suplente 3', 35000, 'Imaginen1.jpeg')">Agregar al carrito</button>
+    <button class="btn-comprar" onclick="agregarAlCarrito('Remera Camiseta river', 35000, 'Imaginen1.jpeg')">Agregar al carrito</button>
 </div>
 
 <!-- Tarjeta 4 -->
@@ -136,7 +136,6 @@ function agregarAlCarrito(nombre, precio, imagen) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
     
     actualizarContadorCarrito();
-    alert("¡Producto agregado al carrito!");
 }
 </script>
 
