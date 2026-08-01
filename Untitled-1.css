@@ -1,22 +1,14 @@
-
 html {
     scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-}
-
-html, body {
-    height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #e6f4ea, #cfe9d8);
-}
-
-body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 /* HEADER */
@@ -103,18 +95,13 @@ main {
     font-size: 50px;
 }
 
-.section-title2 {
-    text-align: center;
-    margin-top: 40px;
-    color: #2f5d3a;
-    font-size: 25px;
-}
-
 .container {
     padding: 30px 40px 50px 40px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .card {
@@ -124,6 +111,9 @@ main {
     box-shadow: 0 8px 20px rgba(46, 94, 58, 0.15);
     text-align: center;
     transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card:hover {
@@ -147,7 +137,7 @@ main {
     color: #3e7c50;
 }
 
-button {
+.btn-comprar {
     background: linear-gradient(90deg, #3e7c50, #4f9d65);
     color: white;
     border: none;
@@ -155,6 +145,12 @@ button {
     cursor: pointer;
     border-radius: 8px;
     font-size: 13px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.btn-comprar:hover {
+    opacity: 0.9;
 }
 
 #contacto {
@@ -175,14 +171,55 @@ footer {
     margin-top: auto;
 }
 
+/* ========================================= */
+/* ADAPTACIÓN MÓVIL (RESPONSIVE)            */
+/* ========================================= */
 @media (max-width: 900px) {
     .container {
         grid-template-columns: repeat(2, 1fr);
+        padding: 20px;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .nav-links a {
+        margin-right: 0;
+    }
+
+    .nav-right {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 90%;
+    }
+
     .container {
         grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .section-title {
+        font-size: 32px;
+        margin-top: 25px;
     }
 }
