@@ -27,3 +27,29 @@
         width: 100%;
     }
 }
+
+@media (max-width: 768px) {
+    .container {
+        margin: 15px 10px !important;
+        padding: 20px 15px !important;
+        gap: 20px !important;
+        flex-direction: column !important;
+    }
+
+    .gallery, .details {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+    }
+
+    .details h1 {
+        font-size: 22px !important;
+    }
+
+    .price {
+        font-size: 20px !important;
+    }
+
+    button {
+        width: 100% !important;
+    }
+}
